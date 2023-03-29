@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/psampath6/bookings/pkg/config"
-	"github.com/psampath6/bookings/pkg/models"
-	"github.com/psampath6/bookings/pkg/render"
+	"github.com/psampath6/bookings/internal/config"
+	"github.com/psampath6/bookings/internal/models"
+	"github.com/psampath6/bookings/internal/render"
 )
 
 // Repo the repository used by the handlers
