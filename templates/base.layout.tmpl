@@ -34,13 +34,13 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
               Rooms
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/generals-quarters">General's Quarters</a>
               <a class="dropdown-item" href="/majors-suite">Major's Suite</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/search-availability" tabindex="-1">Book Now</a>
+            <a class="nav-link" href="/search-availability">Book Now</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/contact" tabindex="-1">Contact</a>
@@ -77,6 +77,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{block "js" .}}
+
     {{end}}
 
 
@@ -179,18 +180,16 @@
           title = "",
         } = c;
 
-        const { value: formValues } = await Swal.fire({
+        const { value: result } = await Swal.fire({
           title: title,
           html: msg,
           backdrop: false,
           focusConfirm: false,
           showCancelButton: true,
           willOpen: () => {
-            const elem = document.getElementById('reservation-dates-modal');
-            const rp = new DateRangePicker(elem, {
-              format: 'yyyy-mm-dd',
-              showOnFocus: true,
-            })
+            if (c.willOpen !== undefined) {
+              c.willOpen();
+            }
           },
           preConfirm: () => {
             return [
@@ -199,13 +198,23 @@
             ]
           },
           didOpen: () => {
-            document.getElementById('start').removeAttribute('disabled');
-            document.getElementById('end').removeAttribute('disabled');
+            if (c.didOpen !== undefined) {
+              c.didOpen();
+            }
           }
         })
-
-        if (formValues) {
-          Swal.fire(JSON.stringify(formValues))
+        if (result) {
+          if (result.dismiss !== Swal.DismissReason.cancel) {
+            if (result.value !== "") {
+              if (c.callback !== undefined) {
+                c.callback(result);
+              }
+            } else {
+                c.callback(false);
+            }
+          } else {
+            c.callback(false);
+          }
         }
       }
       return {
@@ -217,10 +226,8 @@
     }
 
     </script>
-    
+    </body>
 
-    {{block "js" .}}
-
-    {{end}}
+    </html>
 
 {{end}}
