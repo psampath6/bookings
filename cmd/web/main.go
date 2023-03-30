@@ -1,15 +1,17 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
 
+	"github.com/alexedwards/scs/v2"
 	"github.com/psampath6/bookings/internal/config"
 	"github.com/psampath6/bookings/internal/handlers"
+	"github.com/psampath6/bookings/internal/models"
 	"github.com/psampath6/bookings/internal/render"
-	"github.com/alexedwards/scs/v2"
 )
 
 const portNumber = ":8080"
@@ -18,7 +20,8 @@ var session *scs.SessionManager
 
 func main() {
 	
-
+	// what am I going to put in the session
+	gob.Register(models.Reservation{})
 	// change this to true when in production
 	app.InProduction = false
 
