@@ -13,16 +13,39 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.1/dist/css/datepicker-bs5.min.css">
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
         <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
-    
+        <style>
+          .btn-outline-secondary {
+              color: aqua;
+              border-color: #6c757d;
+          }
+
+          p {
+
+          }
+
+          .paraClass {
+              font-size: 3em;
+          }
+
+          .secondClass {
+              color: red;
+          }
+
+          #lastPara {
+              text-decoration: underline;
+          }
+        </style>
+
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="/">Home</a>
@@ -53,19 +76,21 @@
 
     {{end}}
 
-    <div class="row my-footer">
-      <div class="col">
-        Left
+    <footer class="my-footer">
+      <div class="row">
+        <div class="col">
+          Left
+        </div>
+        <div class="col">
+          Middle
+        </div>
+        <div class="col">
+          Right
+        </div>
       </div>
-      <div class="col">
-        Middle
-      </div>
-      <div class="col">
-        Right
-      </div>
-    </div>
+    </footer>
 
-  </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

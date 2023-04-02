@@ -1,0 +1,22 @@
+mode: set
+github.com/psampath6/bookings/internal/handlers/handlers.go:25.47,29.2 1 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:32.33,34.2 1 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:37.67,42.2 3 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:45.68,58.2 5 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:61.74,70.2 4 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:73.78,75.16 2 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:80.2,94.19 6 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:105.2,107.66 2 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:75.16,78.3 2 0
+github.com/psampath6/bookings/internal/handlers/handlers.go:94.19,103.3 4 0
+github.com/psampath6/bookings/internal/handlers/handlers.go:111.71,113.2 1 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:115.69,117.2 1 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:120.75,122.2 1 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:125.79,129.2 3 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:136.79,143.16 3 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:146.2,148.14 3 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:143.16,145.3 1 0
+github.com/psampath6/bookings/internal/handlers/handlers.go:152.70,154.2 1 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:156.81,158.9 2 1
+github.com/psampath6/bookings/internal/handlers/handlers.go:164.2,169.4 4 0
+github.com/psampath6/bookings/internal/handlers/handlers.go:158.9,163.3 4 1
