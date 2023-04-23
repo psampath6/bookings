@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"testing"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
@@ -27,6 +28,46 @@ var functions = template.FuncMap{}
 // to run
 // go test -coverprofile=coverage.out && go tool cover -html=coverage.out
 
+func TestMain(m *testing.M) {
+	gob.Register(models.Reservation{})
+	// change this to true when in production
+	app.InProduction = false
+
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	app.InfoLog = infoLog
+
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+	app.ErrorLog = errorLog
+
+
+	session = scs.New()
+	session.Lifetime = 24 * time.Hour
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	session.Cookie.Secure = app.InProduction
+
+	app.Session = session
+
+	tc, err := CreateTestTemplateCache()
+	app.TemplateCache = tc
+	if err != nil {
+		log.Fatal("cannot create template cache")
+
+	}
+
+	app.TemplateCache = tc
+	app.UseCache = true
+	
+	//repo := NewRepo(&app)
+	repo := NewTestRepo(&app)
+	NewHandlers(repo)
+
+	render.NewRenderer(&app)
+
+	os.Exit(m.Run())
+
+
+}
 func getRoutes() http.Handler {
 	gob.Register(models.Reservation{})
 	// change this to true when in production
@@ -57,10 +98,11 @@ func getRoutes() http.Handler {
 	app.TemplateCache = tc
 	app.UseCache = true
 	
-	repo := NewRepo(&app)
+	//repo := NewRepo(&app)
+	repo := NewTestRepo(&app)
 	NewHandlers(repo)
 
-	render.NewTemplates(&app)
+	render.NewRenderer(&app)
 
 
 	mux := chi.NewRouter()

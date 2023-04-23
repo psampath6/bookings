@@ -39,7 +39,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Bookings</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -212,16 +212,20 @@
 
       async function custom(c) {
         const {
+          icon = "",
           msg = "",
           title = "",
+          showConfirmButton = true,
         } = c;
 
         const { value: result } = await Swal.fire({
+          icon: icon,
           title: title,
           html: msg,
           backdrop: false,
           focusConfirm: false,
           showCancelButton: true,
+          showConfirmButton: showConfirmButton,
           willOpen: () => {
             if (c.willOpen !== undefined) {
               c.willOpen();
