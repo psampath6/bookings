@@ -1,9 +1,9 @@
 package models
 
-import "time"
-
-
-
+import (
+	//"html/template"
+	"time"
+)
 
 // Users in the user model
 type User struct {
@@ -11,6 +11,7 @@ type User struct {
 	FirstName string
 	LastName string
 	Email string
+	Password string
 	AccessLevel int
 	CreatedAt time.Time
 	UpdatedAt time.Time
@@ -44,6 +45,7 @@ type Reservation struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	Room Room
+	Processed int
 }
 
 
@@ -60,4 +62,13 @@ type RoomRestriction struct {
 	Room Room
 	Reservation Reservation
 	Restriction Restriction
+}
+
+// MailData holds an email message
+type MailData struct {
+	To string
+	From string
+	Subject string
+	Content string
+	Template string
 }
